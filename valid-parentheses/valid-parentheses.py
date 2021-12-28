@@ -1,10 +1,13 @@
 class Solution:
     def isValid(self, s: str) -> bool:
-        k = s
-        for i in range(len(s)):
-            if k:
-                k = k.replace('{}','').replace('[]','').replace('()','')
+        stack = []
+        dict = {"]":"[", "}":"{", ")":"("}
+        for char in s:
+            if char in dict.values():
+                stack.append(char)
+            elif char in dict.keys():
+                if stack == [] or dict[char] != stack.pop():
+                    return False
             else:
-                return True
-        return False
-        
+                return False
+        return stack == []
