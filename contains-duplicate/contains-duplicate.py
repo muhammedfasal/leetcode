@@ -1,11 +1,10 @@
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
-        counter = set()
-        for num in nums:
-            if num not in counter:
-                counter.add(num)
+        k = set()
+        for i in nums:
+            if i not in k:
+                k.add(i)
             else:
                 return True
-        else:
-            False
+        return False
         
