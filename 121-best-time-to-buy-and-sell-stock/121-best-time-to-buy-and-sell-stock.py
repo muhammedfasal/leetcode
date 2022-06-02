@@ -1,8 +1,10 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        currmax = 0
-        globalmax = 0
-        for i in range(1,len(prices)):
-            currmax = max(currmax+(prices[i]-prices[i-1]),0)
-            globalmax = max(globalmax,currmax)
-        return globalmax
+        max_profit = 0
+        min_price = float('inf')
+        
+        for price in prices:
+            min_price = min(min_price, price)
+            profit = price - min_price
+            max_profit = max(max_profit,profit)
+        return max_profit
