@@ -1,4 +1,7 @@
 class Solution:
     def isSubsequence(self, s: str, t: str) -> bool:
-        it = iter(t)
-        return all(c in it for c in s)
+        for c in s:
+            i = t.find(c)
+            if i == -1:    return False
+            else:   t = t[i+1:]
+        return True
